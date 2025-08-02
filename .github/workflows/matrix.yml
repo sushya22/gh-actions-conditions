@@ -7,7 +7,7 @@ jobs:
   matrixbranch:
     strategy:
       matrix:
-        operation-system: [ubuntu-latest, windows]
+        operation-system: [ubuntu-latest, windows-latest]
     runs-on: ${{matrix.operation-system}}
     steps:
       - name: get code
