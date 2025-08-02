@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   matrixbranch:
-    stratergy:
+    strategy:
       matrix:
         operation-system: [ubuntu-latest, windows]
     runs-on: ${{matrix.operation-system}}
