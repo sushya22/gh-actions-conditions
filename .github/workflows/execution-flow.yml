@@ -75,3 +75,11 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  report:
+    needs: [lint, deploy]
+    if: failure()
+    steps:
+      - name: output to screen
+        run: |
+          echo "Something went wrong"
+          echo "${{toJSON(github)}}"
