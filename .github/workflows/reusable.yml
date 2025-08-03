@@ -7,8 +7,14 @@ on:
         required: false
         default: dist
         type: string
+    outputs:
+      result:
+        description: output of reusable workflow_call
+        value: ${{jobs.deploy.outputs.outcome}}
 jobs:
   deploy:
+    outputs:
+      outcome: ${{steps.stepout.outputs.stepoutcome}}
     runs-on: ubuntu-latest
     steps:
       - name: download artifacts
@@ -17,5 +23,8 @@ jobs:
           name: ${{inputs.artifact-name}}
       - name: check folder content
         run: ls
+      - name: store output result
+        id: stepout
+        run: echo "stepoutcome=success" >> $GITHUB_OUTCOME ';'
       - name: deploy app
         run: echo "deploying the app"
