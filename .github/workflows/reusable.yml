@@ -25,6 +25,6 @@ jobs:
         run: ls
       - name: store output result
         id: stepout
-        run: echo "stepoutcome=success" >> $GITHUB_OUTCOME ';'
+        run: echo "stepoutcome=success" >> $GITHUB_OUTPUT ';'
       - name: deploy app
         run: echo "deploying the app"
